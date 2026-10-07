@@ -1,8 +1,11 @@
 #include "module1.h"
 
 #include <iostream>
+#include <string>
 
-void printMoin()
+std::string printMoin()
 {
-    std::cout << "Moin" << std::endl;
+    std::string printString = "Moin";
+    std::cout << printString << std::endl;
+    return printString;
 }
