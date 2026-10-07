@@ -25,7 +25,7 @@ jobs:
             - name: integration test
               run: |
                 OUTPUT=$(./program)
-                if  [$OUTPUT = "Moin"]; then
+                if  ["$OUTPUT" = "Moin"]; then
                   echo "Test bestanden"
                 else
                   echo "Test fehlgeschlagen: '$OUTPUT'"
