@@ -1,7 +1,7 @@
-#include <iostream>
+#include "module1.h"
 
 int main()
 {
-    std::cout << "Moin" << std::endl;
+    printMoin();
     return 0;
 }
