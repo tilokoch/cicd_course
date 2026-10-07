@@ -12,8 +12,8 @@ jobs:
 
         steps:
             - name: checkout
-            uses: actions/checkout@v3
+              uses: actions/checkout@v3
             - name: build main
-            runs: g++ main.cpp -o program -Wall -pedantic
+              run: g++ main.cpp -o program -Wall -pedantic
             - name: run
-            runs: ./program  
+              run: ./program  
