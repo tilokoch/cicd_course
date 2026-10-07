@@ -1,3 +1,7 @@
+# customized gitignore rules
+program
+
+
 # Prerequisites
 *.d
 
