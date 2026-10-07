@@ -5,7 +5,7 @@
 
 std::string printMoin()
 {
-    std::string printString = "Moinsen";
+    std::string printString = "Moin";
     std::cout << printString << std::endl;
     return printString;
 }
