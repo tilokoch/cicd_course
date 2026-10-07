@@ -7,12 +7,13 @@ on:
         -dev
 
 jobs:
-    runs-on: ubuntu-latest
+    build:
+        runs-on: ubuntu-latest
 
-    steps:
-        - name: checkout
-          uses: actions/checkout@v3
-        - name: build
-          runs: g++ main.cpp -o program -Wall -pedantic
-        - name: run
-          runs: ./program  
+        steps:
+            - name: checkout
+            uses: actions/checkout@v3
+            - name: build main
+            runs: g++ main.cpp -o program -Wall -pedantic
+            - name: run
+            runs: ./program  
