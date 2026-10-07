@@ -13,16 +13,19 @@ jobs:
         runs-on: ubuntu-latest
 
         steps:
-            - name: checkout
+            - name: Checkout
               uses: actions/checkout@v7
 
-            - name: build main
+            - name: Install tools
+              run: sudo apt-get install -y g++ cppcheck
+
+            - name: Stylecheck with cppcheck
+              run: cppcheck --enable=style,warning,performance --error-exitcode=1 .
+
+            - name: Build main
               run: g++ main.cpp module1.cpp -o program -Wall -pedantic
 
-            - name: run
-              run: ./program  
-
-            - name: integration test
+            - name: Integration test
               run: |
                 OUTPUT=$(./program)
                 printf 'Output: %s\n' "$OUTPUT"
@@ -32,3 +35,6 @@ jobs:
                   echo "Test fehlgeschlagen: '$OUTPUT'"
                   exit 1
                 fi
+
+            - name: Run main
+              run: ./program  
