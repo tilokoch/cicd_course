@@ -15,7 +15,19 @@ jobs:
         steps:
             - name: checkout
               uses: actions/checkout@v7
+
             - name: build main
               run: g++ main.cpp module1.cpp -o program -Wall -pedantic
+
             - name: run
               run: ./program  
+
+            - name: integration test
+              run: |
+              OUTPUT=$(./program)
+              if  [$OUTPUT = "Moin"]; then
+                echo "Test bestanden"
+              else
+                echo "Test fehlgeschlagen: '$OUTPUT'"
+                exit 1
+              fi
