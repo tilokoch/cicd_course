@@ -43,13 +43,13 @@ jobs:
 
             - name: Install tools
               run: sudo apt-get install -y g++ cppcheck clang-tidy libgtest-dev
-              
+
             - name: Build
-              run: (${{ matrix.compiler }}) main.cpp module1.cpp -o program -Wall -pedantic
+              run: ${{ matrix.compiler }} main.cpp module1.cpp -o program -Wall -pedantic
 
             - name: Run module tests
               run: |
-                g++ -std=c++17 module1_unittest.cpp module1.cpp -lgtest_main -lgtest -pthread -o module1_tests
+                ${{ matrix.compiler }} -std=${{ matrix.std }} module1_unittest.cpp module1.cpp -lgtest_main -lgtest -pthread -o module1_tests
                 ./module1_tests
 
             - name: Integration test
