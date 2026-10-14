@@ -72,3 +72,27 @@ jobs:
 
             - name: Run main
               run: ./program  
+
+
+    deploy:
+      needs: build
+      runs-on: ubuntu-latest
+      permissions:
+        contents: write
+      
+      name: Deploy
+      
+      steps:
+        - name: Checkout repo
+          uses: actions/checkout@v7
+        - name: Release Build
+          run: g++ -std=c++17 main.cpp module1.cpp -o program -O2
+        - name: Upload binary
+          uses: actions/upload-artifact@v5
+          with:
+            name: program
+            path: program
+
+            
+
+        
